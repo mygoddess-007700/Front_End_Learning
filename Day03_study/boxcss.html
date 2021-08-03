@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS盒子模型</title>
+		<style>
+			#firstDiv{
+				width: 480px;
+				height: 480px;
+				border: 1px solid red;
+				padding-top: 30px;
+				padding-left: 50px;
+				margin: 0 auto; /*让div居中（上下是0，左右自动）*/
+			}
+			#secondDiv{
+				width: 260px;
+				height: 260px;
+				border: 4px solid cyan;
+				padding-top: 30px;
+			}
+			#loginBtn{
+				margin-top: 30px;
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="firstDiv">
+			<div id="secondDiv">
+				<button id="loginBtn">登录按钮</button>
+			</div>
+		</div>
+	</body>
+</html>

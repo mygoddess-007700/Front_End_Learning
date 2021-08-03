@@ -145,3 +145,38 @@ HTML中的空格：&nbsp;
 3. post比get慢 
 4. post用于修改和写入数据
    get一般用于搜索排序和筛选之类的操作（淘宝，支付宝的搜索查询都是get提交），目的是资源的获取，读取数据 
+   
+# Lesson3
+## 一、CSS是什么？
+1. 层叠式样式表，简称为样式。（Cascading Style Sheets）
+2. 由W3C组织制定的标准，最新版CSS3
+3. CSS由浏览器执行
+4. 作用：美化网页
+
+## 二、CSS选择器
+1. 标记选择器
+2. id选择器
+3. class选择器
+注：重要！
+
+## 三、CSS代码放置的位置
+1. 页内样式：放在head之间，用style标记
+2. 行内样式：放在style属性里，行内样式优先级最高
+3. 外部样式：放在独立的.css文件中，在网页上用link标记引入
+
+## 四、开发常用样式
+1. 背景颜色（background-color）
+2. 文本样式（color\text-align\text-decoration）
+3. 字体样式（font-family\font-size）
+ 网页上的文字默认是16px；在工程上，网页上的文字一般是12px或14px
+4. 链接样式（a:hover）
+5. 表格样式（细线表格border-collapse:collapse）
+6. 边框样式（边框变红border: 1px solid red）
+
+## 五、CSS盒子模型
+1. 与网页布局密切相关
+2. 重要：外边距margin、内边距padding；内外边距是相对的，有四个方向
+
+## 六、登录网页
+1. 用到了盒子模型（内部外部边距等）
+2. HTML表单元素（用户名，密码，登录按钮）
