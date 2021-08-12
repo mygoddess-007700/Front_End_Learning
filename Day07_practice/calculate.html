@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人社保计算</title>
+	</head>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+		function calc()
+		{
+			//1. 获得工资，表单验证
+			var sal = document.getElementById("salary").value;
+			var regExp = /^[0-9]{4,5}$/;
+			if (!regExp.test(sal))
+			{
+				//输入不合法
+				document.getElementById("salary").value = "必须输入4-5位数字"
+				document.getElementById("salary").style = "color:red";
+				return;
+			}
+			//2. 如果输入合法的话，开始计算
+			//3. 把计算结果放到单元格里
+			var salNum = parseInt(sal);
+			var yanglgr = salNum * 0.08;
+			var yanglgs = salNum * 0.2;
+			document.getElementById("yanglgr").innerHTML = yanglgr;
+			document.getElementById("yanglgs").innerText = yanglgs;
+			
+			var yilgr = salNum * 0.02;
+			var yilgs = salNum * 0.06;
+			document.getElementById("yilgr").innerHTML = yilgr;
+			document.getElementById("yilgs").innerText = yilgs;
+			
+			var shiygr = salNum * 0.005;
+			var shiygs = salNum * 0.015;
+			document.getElementById("shiygr").innerHTML = shiygr;
+			document.getElementById("shiygs").innerText = shiygs;
+			
+			var gongsgs = salNum * 0.005;
+			document.getElementById("gongsgs").innerHTML = gongsgs;
+			
+			var shengygs = salNum * 0.008;
+			document.getElementById("shengygs").innerHTML = shengygs;
+			
+			var gongjjgr = salNum * 0.12;
+			var gongjjgs = salNum * 0.12;
+			document.getElementById("gongjjgr").innerHTML = gongjjgr;
+			document.getElementById("gongjjgs").innerText = gongjjgs;
+			
+			var grTotal = yanglgr + yilgr + shiygr + gongjjgr;
+			document.getElementById("grTotal").innerHTML = grTotal;
+			var gsTotal = yanglgs + yilgs + shiygs + gongsgs + shengygs + gongjjgs;
+			document.getElementById("gsTotal").innerHTML = gsTotal;
+			var total = salNum + gsTotal;
+			document.getElementById("total").innerHTML = total;
+		}
+		
+		function clearText()
+		{
+			document.getElementById("salary").value = '';
+			document.getElementById("salary").style = "color:black";
+		}
+	</script>
+	<body>
+		<div class="container text-center">
+			<img src="me.jpg" class="img-circle" width="100px" height="100px"/>
+			<table class="table table-bordered table-striped text-center">
+				<tr>
+					<td>工资</td>
+					<td colspan="3">
+						<input onfocus="clearText()" type="text" id="salary" placeholder="请输入工资" class="form-control"/>
+					</td>
+					<td>
+						<button onclick="calc()" class="btn btn-danger btn-block">计算</button>
+					</td>
+				</tr>
+				<tr class="bg-primary">
+					<td>险种</td>
+					<td>个人%</td>
+					<td>个人</td>
+					<td>公司%</td>
+					<td>公司</td>
+				</tr>
+				<tr>
+					<td>养老</td>
+					<td>8%</td>
+					<td id="yanglgr"></td>
+					<td>20%</td>
+					<td id="yanglgs"></td>
+				</tr>
+				<tr>
+					<td>医疗</td>
+					<td>2%</td>
+					<td id="yilgr"></td>
+					<td>6%</td>
+					<td id="yilgs"></td>
+				</tr>
+				<tr>
+					<td>失业</td>
+					<td>0.5%</td>
+					<td id="shiygr"></td>
+					<td>1.5%</td>
+					<td id="shiygs"></td>
+				</tr>
+				<tr>
+					<td>工伤</td>
+					<td></td>
+					<td></td>
+					<td>0.5%</td>
+					<td id="gongsgs"></td>
+				</tr>
+				<tr>
+					<td>生育</td>
+					<td></td>
+					<td></td>
+					<td>0.8%</td>
+					<td id="shengygs"></td>
+				</tr>
+				<tr>
+					<td>公积金</td>
+					<td>12%</td>
+					<td id="gongjjgr"></td>
+					<td>12%</td>
+					<td id="gongjjgs"></td>
+				</tr>
+				<tr>
+					<td>合计</td>
+					<td>个人合计</td>
+					<td id="grTotal"></td>
+					<td>公司合计</td>
+					<td id="gsTotal"></td>
+				</tr>
+				<tr>
+					<td>总额</td>
+					<td colspan="4" id="total"></td>
+				</tr>
+			</table>
+			开发者：&nbsp;Mr.fu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一名游戏开发热爱者
+		</div>
+	</body>
+</html>

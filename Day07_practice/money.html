@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>网上银行-个人存款计算器</title>
+	</head>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+		//定义一个函数，完成存款计算
+		function calc()
+		{
+			//一开始，做表单验证，看输入的是不是数字
+			
+			//1. 获取存款金额（读取文本框里用户输入的数字）
+			var money = document.getElementById("amount").value;
+			//定义一个正则表达式，要求存款最多是六位数字，最少是两位数字
+			var regExp = /^[0-9]{2,6}$/;
+			if (!regExp.test(money))
+			{
+				//输入不合法
+				document.getElementById("amount").value = "输入不合法：必须是2-6位数字"
+				document.getElementById("amount").style = "color:red";
+				return;
+			}
+			
+			var moneyNum = parseInt(money); //字符串转成整数
+			//2. 开始计算
+			//取得年利率
+			var percent = document.getElementById("year").value;
+			// var percentNum = parseFloat(money);
+			var extraMoney = moneyNum * percent; //利息
+			var total = moneyNum + extraMoney; //利息合计
+			//3. 把计算的结果写入相应的文本框，用户就能看到
+			document.getElementById("extra").value = extraMoney;
+			document.getElementById("total").value = total;
+		}
+		
+		function clearContent()
+		{
+			//清空文本框
+			document.getElementById("amount").value = '';
+			document.getElementById("amount").style = "color:black";
+		}
+	</script>
+	<body>
+		<div class="container text-center">
+			<h1>个人网银-个人存款计算</h1>
+			<table class="table table-bordered text-center">
+				<tr class="bg-primary">
+					<td colspan="2">个人存款计算器</td>
+				</tr>
+				<tr>
+					<td>存款金额</td>
+					<td>
+						<input onfocus="clearContent()" class="form-control" type="text" id="amount" placeholder="请输入存款金额"/>
+					</td>
+				</tr>
+				<tr>
+					<td>存款年限</td>
+					<td>
+						<select id="year" class="form-control">
+							<option value="0.0175">一年(1.75%)</option>
+							<option value="0.045">两年(2.25%)</option>
+							<option value="0.0825">三年(2.75%)</option>
+							<option value="0.1375">五年(2.75%)</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+						<td>所得利息</td>
+						<td>
+							<input id="extra" type="text" class="form-control" readonly="readonly"/>
+						</td>
+				</tr>
+				<tr>
+					<td>本息合计</td>
+					<td>
+						<input type="text" id="total" class="form-control" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button onclick="calc()" class="btn btn-primary btn-block">计算</button>
+					</td>
+				</tr>
+			</table>
+			开发者：&nbsp;Mr.fu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一名游戏开发热爱者
+		</div>
+	</body>
+</html>

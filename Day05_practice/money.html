@@ -10,6 +10,24 @@
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+		//定义一个函数，完成存款计算
+		function calc()
+		{
+			//1. 获取存款金额（读取文本框里用户输入的数字）
+			var money = document.getElementById("amount").value;
+			var moneyNum = parseInt(money); //字符串转成整数
+			//2. 开始计算
+			//取得年利率
+			var percent = document.getElementById("year").value;
+			// var percentNum = parseFloat(money);
+			var extraMoney = moneyNum * percent; //利息
+			var total = moneyNum + extraMoney; //利息合计
+			//3. 把计算的结果写入相应的文本框，用户就能看到
+			document.getElementById("extra").value = extraMoney;
+			document.getElementById("total").value = total;
+		}
+	</script>
 	<body>
 		<div class="container text-center">
 			<h1>个人网银-个人存款计算</h1>
@@ -37,7 +55,7 @@
 				<tr>
 						<td>所得利息</td>
 						<td>
-							<input type="text" class="form-control" readonly="readonly"/>
+							<input id="extra" type="text" class="form-control" readonly="readonly"/>
 						</td>
 				</tr>
 				<tr>
@@ -48,11 +66,11 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button class="btn btn-primary btn-block">计算</button>
+						<button onclick="calc()" class="btn btn-primary btn-block">计算</button>
 					</td>
 				</tr>
 			</table>
-			开发者：&nbsp;Mr.fu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一名游戏开发热爱者
+			开发者：&nbsp;Mr.fu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一名游戏开发热爱者
 		</div>
 	</body>
 </html>
